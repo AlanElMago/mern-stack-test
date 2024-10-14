@@ -18,4 +18,4 @@ jobs:
           ssh-port: 3066
       - name: Deploy to Raspberry Pi 4
         run: |
-          ssh -o StrictHostKeyChecking=no -P 3066 donjon@donjon-srv-raspberry-pi-4.duckdns.org "cd git-repos/mern-stack-test && git pull && sudo docker compose --env-file ./.env.keys -f ./docker-compose.dev.yml up -d --build --force-recreate"
+          ssh -o StrictHostKeyChecking=no -p 3066 donjon@donjon-srv-raspberry-pi-4.duckdns.org "cd git-repos/mern-stack-test && git pull && sudo docker compose --env-file ./.env.keys -f ./docker-compose.dev.yml up -d --build --force-recreate"
