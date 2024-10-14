@@ -10,8 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: setup SSH
-
+      - name: Set up SSH
         uses: actions/setup-ssh@v2
         with:
             ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
