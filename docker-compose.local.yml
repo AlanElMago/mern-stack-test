@@ -1,0 +1,15 @@
+services:
+  be-local:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.local
+    environment:
+      - DOTENV_PRIVATE_KEY_LOCAL=${DOTENV_PRIVATE_KEY_LOCAL}
+    ports:
+      - "5555:5555"
+  fe-local:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.local
+    ports:
+      - "3000:3000"

@@ -1,0 +1,15 @@
+services:
+  be-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    environment:
+      - DOTENV_PRIVATE_KEY_DEV=${DOTENV_PRIVATE_KEY_DEV}
+    ports:
+      - "5555:5555"
+  fe-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
