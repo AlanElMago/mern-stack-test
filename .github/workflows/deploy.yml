@@ -1,0 +1,21 @@
+name: Deploy to Rasperry Pi 4
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: setup SSH
+
+        uses: actions/setup-ssh@v2
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            ssh-private-key-file: ~/.ssh/donjon-srv-raspberrypi-4_github
+      - name: Deploy to Raspberry Pi 4
+        run: |
+          ssh -o StrictHostKeyChecking=no -P 3066 donjon@donjon-srv-raspberry-pi-4.duckdns.org "cd git-repos/mern-stack-test && git pull && sudo docker compose --env-file ./.env.keys -f ./docker-compose.dev.yml up -d --build --force-recreate"
